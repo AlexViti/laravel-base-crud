@@ -6,7 +6,7 @@
 
   <main class="container">
     <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+    <a href="{{ route('comics.index') }}">Comics</a>
   </main>
 
 @endsection

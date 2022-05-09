@@ -18,7 +18,7 @@ class CreateComicsTable extends Migration
       $table->string('title', 200);
       $table->text('description')->nullable();
       $table->string('thumb', 200)->nullable();
-      $table->integer('price')->default(0);
+      $table->mediumInteger('price')->unsigned()->default(0);
       $table->string('series', 200);
       $table->date('sale_date');
       $table->string('type', 50)->default('comic book');

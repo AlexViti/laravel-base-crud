@@ -15,6 +15,7 @@ class ComicSeeder extends Seeder
     $comics = config('comics');
     foreach ($comics as $comic) {
       $comic = new Comic($comic);
+      $comic->price *= 100;
       $comic->save();
     }
   }

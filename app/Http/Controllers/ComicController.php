@@ -25,7 +25,7 @@ class ComicController extends Controller
    */
   public function create()
   {
-  //
+    return view('comics.create');
   }
 
   /**
@@ -36,7 +36,15 @@ class ComicController extends Controller
    */
   public function store(Request $request)
   {
-  //
+    $request->validate([
+      'title' => 'required|max:200',
+      'description' => 'nullable|max:500',
+      'thumb' => 'nullable|max:200',
+      'price' => 'required|integer',
+      'series' => 'required|max:200',
+      'sale_date' => 'required|date',
+      'type' => 'required|max:50',
+    ]);
   }
 
   /**

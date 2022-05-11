@@ -24,8 +24,8 @@
             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
           </div>
           <div class="form-group">
-            <label for="thumb">Cover</label>
-            <input type="file" class="form-control-file" id="thumb" name="thumb">
+            <label for="thumb">Cover(URL)</label>
+            <input type="text" class="form-control" id="thumb" name="thumb">
           </div>
           <div class="form-group">
             <label for="sale_date">Sale Date</label>
@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+            <input type="number" class="form-control" id="price" name="price" placeholder="Price" step="any">
           </div>
           <div class="form-group">
             <label for="type">Type</label>

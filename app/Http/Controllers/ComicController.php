@@ -40,11 +40,17 @@ class ComicController extends Controller
       'title' => 'required|max:200',
       'description' => 'nullable|max:500',
       'thumb' => 'nullable|max:200',
-      'price' => 'required|integer',
+      'price' => 'required|numeric',
       'series' => 'required|max:200',
       'sale_date' => 'required|date',
       'type' => 'required|max:50',
     ]);
+
+    $comic = new Comic($request->all());
+    $comic->price = $request->price * 100;
+    $comic->save();
+
+    return redirect()->route('comics.index')->with('success', 'Comic created successfully');
   }
 
   /**

@@ -18,8 +18,8 @@
           <a class="nav-link" href="{{ route('comics.create') }}">Add Comics</a>
         </li>
       </ul>
+      <a href="{{ url()->previous() }}" class="btn btn-primary">&larr; Back</a>
     </div>
-    <a href="{{ url()->previous() }}" class="btn btn-primary">&larr; Back</a>
   </div>
 </nav>
 

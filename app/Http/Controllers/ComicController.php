@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+  protected $validationRules = [
+      'title'       => 'required|max:200',
+      'description' => 'nullable',
+      'thumb'       => 'nullable|URL|max:200',
+      'price'       => 'required|numeric|min:0',
+      'series'      => 'required|max:200',
+      'sale_date'   => 'required|date|before:tomorrow',
+      'type'        => 'required|max:50',
+  ];
   /**
    * Display a listing of the resource.
    *
@@ -36,21 +45,13 @@ class ComicController extends Controller
    */
   public function store(Request $request)
   {
-    $request->validate([
-      'title' => 'required|max:200',
-      'description' => 'nullable|max:500',
-      'thumb' => 'nullable|max:200',
-      'price' => 'required|numeric',
-      'series' => 'required|max:200',
-      'sale_date' => 'required|date',
-      'type' => 'required|max:50',
-    ]);
+    $request->validate($this->validationRules);
 
     $comic = new Comic($request->all());
-    $comic->price = $request->price * 100;
+    $comic->price *= 100;
     $comic->save();
 
-    return redirect()->route('comics.index')->with('success', 'Comic created successfully');
+    return redirect()->route('comics.index'); // ->with('success', 'Comic created successfully');
   }
 
   /**
@@ -84,21 +85,13 @@ class ComicController extends Controller
    */
   public function update(Request $request, Comic $comic)
   {
-    $request->validate([
-      'title' => 'required|max:200',
-      'description' => 'nullable|max:500',
-      'thumb' => 'nullable|max:200',
-      'price' => 'required|numeric',
-      'series' => 'required|max:200',
-      'sale_date' => 'required|date',
-      'type' => 'required|max:50',
-    ]);
+    $request->validate($this->validationRules);
 
     $comic->update($request->all());
     $comic->price = $request->price * 100;
     $comic->save();
 
-    return redirect()->route('comics.index')->with('success', 'Comic updated successfully');
+    return redirect()->route('comics.show', $comic->id); // ->with('success', 'Comic updated successfully');
   }
 
   /**
@@ -111,6 +104,6 @@ class ComicController extends Controller
   {
     $comic->delete();
 
-    return redirect()->route('comics.index')->with('success', 'Comic deleted successfully');
+    return redirect()->route('comics.index'); //->with('success', 'Comic deleted successfully');
   }
 }

@@ -19,6 +19,7 @@
         </li>
       </ul>
     </div>
+    <a href="{{ url()->previous() }}" class="btn btn-primary">&larr; Back</a>
   </div>
 </nav>
 

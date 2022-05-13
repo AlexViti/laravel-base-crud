@@ -17,6 +17,8 @@
         Price: <span>{{ $comic->price / 100 }} USD</span>
       </div>
       <button class="btn btn-primary">Buy</button>
+      <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary">Edit</a>
+      {{-- <a href="{{ route('comics.delete', $comic->id) }}" class="btn btn-danger">Delete</a> --}}
     </div>
   </main>
 

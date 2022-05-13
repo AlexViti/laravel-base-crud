@@ -17,6 +17,8 @@
               <h5 class="card-title">{{ $comic->series }}</h5>
               <p class="card-text">{{ substr($comic->description, 0, 100) }}...</p>
               <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">Read more</a>
+              <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary">Edit</a>
+              {{-- <a href="{{ route('comics.delete', $comic->id) }}" class="btn btn-danger">Delete</a> --}}
             </div>
           </div>
         </div>

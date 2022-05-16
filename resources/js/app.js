@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('../views/lbc/assets/js/app')
 
 import 'bootstrap';
 

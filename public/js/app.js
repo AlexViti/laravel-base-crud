@@ -37275,6 +37275,18 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+var confirmationOverlay = document.getElementById('confirmation-overlay');
+var confirmationForm = confirmationOverlay.querySelector('form');
+document.querySelectorAll('.btn-delete').forEach(function (button) {
+  button.addEventListener('click', function () {
+    confirmationForm.action = confirmationForm.dataset.base + '/' + this.dataset.id;
+    confirmationOverlay.style.display = 'flex';
+  });
+  confirmationOverlay.querySelector('.btn-cancel').addEventListener('click', function () {
+    confirmationOverlay.style.display = 'none';
+    confirmationForm.action = "";
+  });
+});
 
 /***/ }),
 

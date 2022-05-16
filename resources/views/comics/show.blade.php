@@ -5,6 +5,13 @@
 @section('content')
 
   <main>
+    {{-- success --}}
+    @if (session('success'))
+      <div class="alert alert-success">
+        {{ session('success') }}
+      </div>
+    @endif
+
     <div class="container">
       <h1>{{ $comic->title }}</h1>
       <h2>{{ $comic->series }}</h2>

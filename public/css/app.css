@@ -10966,3 +10966,16 @@ a.text-dark:focus {
   background-color: #f50000;
 }
 
+.overlay {
+  position: fixed;
+  inset: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+}
+
+.overlay .pop-up {
+  margin: auto;
+  background-color: white;
+}
+

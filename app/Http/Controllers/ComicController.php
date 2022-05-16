@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
   protected $validationRules = [
-      'title'       => 'required|max:200',
+      'title'       => 'required|unique:comics|max:200',
       'description' => 'nullable',
       'thumb'       => 'nullable|URL|max:200',
       'price'       => 'required|numeric|min:0',
@@ -51,7 +52,7 @@ class ComicController extends Controller
     $comic->price *= 100;
     $comic->save();
 
-    return redirect()->route('comics.index'); // ->with('success', 'Comic created successfully');
+    return redirect()->route('comics.index')->with('success', 'Comic created successfully');
   }
 
   /**
@@ -85,13 +86,15 @@ class ComicController extends Controller
    */
   public function update(Request $request, Comic $comic)
   {
+    // $this->validationRules['title'] = Rule::unique('comics')->ignore($comic->id);
+    $this->validationRules['title'] = "required|unique:comics,title,{$comic->id}";
     $request->validate($this->validationRules);
 
     $comic->update($request->all());
     $comic->price = $request->price * 100;
     $comic->save();
 
-    return redirect()->route('comics.show', $comic->id); // ->with('success', 'Comic updated successfully');
+    return redirect()->route('comics.show', $comic->id)->with('success', 'Comic updated successfully');
   }
 
   /**
@@ -104,6 +107,6 @@ class ComicController extends Controller
   {
     $comic->delete();
 
-    return redirect()->route('comics.index'); //->with('success', 'Comic deleted successfully');
+    return redirect()->route('comics.index')->with('success', 'Comic deleted successfully');
   }
 }

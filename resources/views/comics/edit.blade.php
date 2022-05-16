@@ -14,49 +14,49 @@
           @csrf
           <div class="form-group">
             <label for="series">Series</label>
-            <input type="text" class="form-control" id="series" name="series" value="{{ $comic->series }}">
+            <input type="text" class="form-control" id="series" name="series" value="{{ old('series', $comic->series) }}">
           </div>
           @error('series')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ $comic->title }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title', $comic->title) }}">
           </div>
           @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description">{{ $comic->description }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description">{{ old('description', $comic->description) }}</textarea>
           </div>
           @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="thumb">Cover(URL)</label>
-            <input type="text" class="form-control" id="thumb" name="thumb" placeholder="Cover(URL)" value="{{ $comic->thumb }}">
+            <input type="text" class="form-control" id="thumb" name="thumb" placeholder="Cover(URL)" value="{{ old('thumb', $comic->thumb) }}">
           </div>
           @error('thumb')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="sale_date">Sale Date</label>
-            <input type="date" class="form-control" id="sale_date" name="sale_date" placeholder="Sale Date" value="{{ $comic->sale_date }}">
+            <input type="date" class="form-control" id="sale_date" name="sale_date" placeholder="Sale Date" value="{{ old('sale_date', $comic->sale_date) }}">
           </div>
           @error('sale_date')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" name="price" placeholder="Price" step="any" value="{{ $comic->price / 100 }}">
+            <input type="number" class="form-control" id="price" name="price" placeholder="Price" step="any" value="{{ old('price', $comic->price / 100) }}">
           </div>
           @error('price')
             <div class="alert alert-danger">{{ $message }}</div>
           @enderror
           <div class="form-group">
             <label for="type">Type</label>
-            <select class="form-control" id="type" name="type" value="{{ $comic->type }}">
+            <select class="form-control" id="type" name="type" value="{{ old('type', $comic->type) }}">
               <option value="">Select...</option>
               <option value="comic book">Comic Book</option>
               <option value="graphic novel">Graphic Novel</option>

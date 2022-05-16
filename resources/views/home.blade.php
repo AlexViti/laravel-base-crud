@@ -3,12 +3,15 @@
 @section('title', 'Home')
 
 @section('content')
+<div class="container">
   <x-carousel id="carousel-2" :indicators="true" :control="true" class="mb-3">
     @foreach ($comics as $comic)
     <x-slot :name="'slot_' . $loop->iteration">
       <x-card :overlay="true">
         <x-slot name="image">
-          <x-image :lazyload="false" src="{{ $comic->thumb }}"/>
+          <div class="d-flex justify-content-center bg-primary">
+            <x-image :lazyload="false" src="{{ $comic->thumb }}" class="img-fluid w-50"/>
+          </div>
         </x-slot>
         <x-slot name="body">
           <div class="d-flex mt-4 justify-content-center align-items-end h-100">
@@ -19,4 +22,5 @@
     </x-slot>
     @endforeach
   </x-carousel>
+</div>
 @endsection

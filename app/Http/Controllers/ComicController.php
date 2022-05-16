@@ -105,8 +105,14 @@ class ComicController extends Controller
    */
   public function destroy(Comic $comic)
   {
+    $previousUrl = url()->previous();
+
+    if ($previousUrl === route('comics.show', $comic->id)) {
+      $previousUrl = route('comics.index');
+    }
+
     $comic->delete();
 
-    return redirect()->route('comics.index')->with('success', 'Comic deleted successfully');
+    return redirect($previousUrl)->with('success', 'Comic deleted successfully');
   }
 }
